@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* CashBullX V2 Dark Fintech Theme */
+    --background: 222 47% 5%;
+    --foreground: 0 0% 100%;
+    --card: 220 30% 8%;
+    --card-foreground: 0 0% 100%;
+    --popover: 220 30% 8%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 263 72% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 190 100% 50%;
+    --secondary-foreground: 222 47% 5%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 215 16% 68%;
+    --accent: 42 91% 55%;
+    --accent-foreground: 222 47% 5%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 5%;
+    --border: 0 0% 100% / 0.08;
+    --input: 220 20% 15%;
+    --ring: 263 72% 50%;
+    --radius: 0.75rem;
+    --sidebar-background: 220 30% 8%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 263 72% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 15%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 100% / 0.08;
+    --sidebar-ring: 263 72% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-cbx-dark text-white antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Card */
+  .glass-card {
+    @apply bg-cbx-card/80 backdrop-blur-xl border border-white/[0.08] rounded-2xl;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:shadow-card-hover hover:border-white/[0.12];
+  }
+
+  /* Glassmorphism Strong */
+  .glass-strong {
+    @apply bg-cbx-card/95 backdrop-blur-2xl border-b border-white/[0.06];
+  }
+
+  /* Premium Gradient Border */
+  .gradient-border {
+    position: relative;
+  }
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(109, 40, 217, 0.5), rgba(0, 212, 255, 0.3), rgba(251, 191, 36, 0.2));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Glow Effects */
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(109, 40, 217, 0.3), 0 0 40px rgba(109, 40, 217, 0.1);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.2), 0 0 40px rgba(0, 212, 255, 0.08);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.2), 0 0 40px rgba(251, 191, 36, 0.08);
+  }
+
+  .glow-success {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.2), 0 0 40px rgba(16, 185, 129, 0.08);
+  }
+
+  /* Text Gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cbx-purple via-cbx-cyan to-cbx-gold;
+  }
+
+  .text-gradient-purple {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cbx-purple to-cbx-cyan;
+  }
+
+  /* Shimmer Loading Effect */
+  .shimmer {
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  /* Status Badges */
+  .status-badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium;
+  }
+
+  .status-pending {
+    @apply status-badge bg-cbx-warning/10 text-cbx-warning border border-cbx-warning/20;
+  }
+
+  .status-approved {
+    @apply status-badge bg-cbx-success/10 text-cbx-success border border-cbx-success/20;
+  }
+
+  .status-rejected {
+    @apply status-badge bg-cbx-danger/10 text-cbx-danger border border-cbx-danger/20;
+  }
+
+  /* Scrollbar Styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Brand Text */
+  .brand-text {
+    @apply font-bold tracking-tight;
+    background: linear-gradient(135deg, #6D28D9 0%, #00D4FF 50%, #FBBF24 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Section Container */
+  .section-container {
+    @apply w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16;
+  }
+
+  /* Gradient Background */
+  .bg-gradient-mesh {
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(109, 40, 217, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(251, 191, 36, 0.05) 0%, transparent 60%);
+  }
+
+  /* Animated Background */
+  .bg-animated {
+    background: linear-gradient(-45deg, #070B14, #0a0e1a, #0d1220, #070B14);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
+  /* Input Dark */
+  .input-dark {
+    @apply bg-white/[0.04] border-white/[0.08] text-white placeholder:text-white/40 focus:border-cbx-purple/50 focus:ring-1 focus:ring-cbx-purple/30;
+  }
+
+  /* Button Glow */
+  .btn-glow {
+    @apply relative overflow-hidden;
+  }
+  .btn-glow::after {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: linear-gradient(135deg, rgba(109, 40, 217, 0.3), rgba(0, 212, 255, 0.2));
+  }
+  .btn-glow:hover::after {
+    @apply opacity-100;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
